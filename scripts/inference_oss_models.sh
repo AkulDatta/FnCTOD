@@ -5,8 +5,7 @@
 # LICENSE file in the root directory of this source tree.
 #
 
-export TRANSFORMERS_CACHE='HOME_PATH/.cache/huggingface/transformers'
-export HF_HOME='HOME_PATH/.cache/huggingface'
+export TRANSFORMERS_CACHE="$HF_HOME/transformers"
 
 devices=2,4,6
 

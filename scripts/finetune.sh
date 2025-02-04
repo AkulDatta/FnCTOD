@@ -5,14 +5,16 @@
 # LICENSE file in the root directory of this source tree.
 #
 
-export TRANSFORMERS_CACHE='HOME_PATH/.cache/huggingface/transformers'
-export HF_HOME='HOME_PATH/.cache/huggingface'
+# export TRANSFORMERS_CACHE='HOME_PATH/.cache/huggingface/transformers'
+# export HF_HOME='HOME_PATH/.cache/huggingface'
+echo $TRANSFORMERS_CACHE
+echo $HF_HOME
 
 devices=1
 
 cd ..
 
-for data in sft-llama2-200
+for data in sft-llama2-pd200
 do
     for train_on_response in False
     do
@@ -20,7 +22,7 @@ do
         do
             for ep in 1
             do
-                CUDA_VISIBLE_DEVICES=$devices python finetune.py \
+                CUDA_VISIBLE_DEVICES=0,1,2,3 python finetune.py \
                     --base_model meta-llama/Llama-2-13b-chat-hf \
                     --data-path ./data/finetunedata/$data.json \
                     --output_dir ./ckpt/lora_ckpt/llama-2-13b-chat-$data \

@@ -7,9 +7,13 @@
 
 python -m spacy download en_core_web_sm
 cd ./ubar-preprocessing/data
+echo "Downloading MultiWOZ 2.1"
 wget https://github.com/budzianowski/multiwoz/blob/master/data/MultiWOZ_2.1.zip?raw=true -O MultiWOZ_2.1.zip
 unzip MultiWOZ_2.1.zip
+echo "Downloading MultiWOZ 2.2"
 git clone https://github.com/budzianowski/multiwoz.git
+ls
+pwd
 cd multiwoz/data/MultiWOZ_2.2
 python convert_to_multiwoz_format.py --multiwoz21_data_dir="../../../MultiWOZ_2.1" --output_file="moz22_data.json"
 mv moz22_data.json ../../../MultiWOZ_2.1/

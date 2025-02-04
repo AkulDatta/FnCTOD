@@ -163,7 +163,7 @@ def train(
         os.environ["WANDB_LOG_MODEL"] = wandb_log_model
 
     model = LlamaForCausalLM.from_pretrained(
-        base_model, load_in_8bit=True, torch_dtype=torch.float16, device_map=device_map
+        base_model, load_in_8bit=False, torch_dtype=torch.float16, device_map=device_map
     )
 
     tokenizer = LlamaTokenizer.from_pretrained(base_model)
